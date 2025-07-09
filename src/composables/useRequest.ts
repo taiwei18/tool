@@ -333,12 +333,12 @@ class HttpClient {
       if (config.cache && method === 'GET') {
         this.cache.set(
           this.cache.getCacheKey(url, config),
-          processedResponse,
+          processedResponse.data,
           config.cacheTime
         )
       }
 
-      return processedResponse
+      return processedResponse.data
 
     } catch (error: any) {
       errorHandler.handleError(error, {
