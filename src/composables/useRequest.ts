@@ -157,7 +157,7 @@ class HttpClient {
   private async processRequestConfig(url: string, config: RequestConfig): Promise<RequestConfig> {
     let processedConfig = {
       ...config,
-      baseURL: config.baseURL || this.baseURL,
+      baseURL: config.baseURL || this.baseURL || '',
       timeout: config.timeout || this.timeout,
       headers: { ...this.defaultHeaders, ...config.headers }
     }
@@ -558,7 +558,7 @@ http.interceptors.response.use(
   }
 )
 
-// 导出类型
+// 导出类型（避免重复导出）
 export type { RequestConfig, RequestState, ApiResponse, Interceptors }
 
 // 默认导出

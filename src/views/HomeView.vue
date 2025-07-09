@@ -38,8 +38,8 @@ const searchForm = reactive({
   limit: 12,
   search: '',
   status: 'active' as 'active' | 'archived' | 'deleted',
-  dateFrom: null,
-  dateTo: null
+  dateFrom: undefined as string | undefined,
+  dateTo: undefined as string | undefined
 })
 
 // 分页信息
@@ -70,7 +70,7 @@ const handleExtract = async () => {
       input: extractForm.input.trim()
     })
 
-    extractedData.value = response.data.data || response.data
+    extractedData.value = response.data
 
     // 提取成功后刷新记录列表
     await loadRecords()
@@ -92,7 +92,7 @@ const loadRecords = async () => {
     loading.value = true
     const response = await xiaohongshuApi.getRecords(searchForm)
 
-    const data = response.data.data || response.data
+    const data = response.data
     records.value = data.records || []
     pagination.value = data.pagination || {
       total: 0,
@@ -120,7 +120,7 @@ const loadRecords = async () => {
 const loadStats = async () => {
   try {
     const response = await xiaohongshuApi.getStats()
-    stats.value = response.data.data || response.data
+    stats.value = response.data
     console.log('统计信息:', response.data)
   } catch (error) {
     console.error('加载统计信息失败:', error)
@@ -131,7 +131,7 @@ const loadStats = async () => {
 const viewRecordDetail = async (record: XiaoHongShuRecord) => {
   try {
     const response = await xiaohongshuApi.getRecordById(record._id)
-    selectedRecord.value = response.data.data || response.data
+    selectedRecord.value = response.data
     detailDialog.value = true
   } catch (error) {
     console.error('获取记录详情失败:', error)

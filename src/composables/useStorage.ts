@@ -1,4 +1,4 @@
-import { ref, watch, Ref } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 
 type StorageType = 'localStorage' | 'sessionStorage'
 
@@ -46,7 +46,7 @@ export function useStorage<T>(
     }
   }
 
-  const storedValue = ref<T>(readFromStorage())
+  const storedValue: Ref<T> = ref<T>(readFromStorage())
 
   // 监听值的变化并同步到存储
   watch(

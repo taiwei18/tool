@@ -21,7 +21,9 @@ const props = withDefaults(defineProps<Props>(), {
   background: 'transparent'
 })
 
-const { mobile, tablet, desktop } = useDisplay()
+const { mobile, mdAndUp, lgAndUp } = useDisplay()
+const tablet = computed(() => mdAndUp.value && !lgAndUp.value)
+const desktop = computed(() => lgAndUp.value)
 const { deviceInfo, isMobile, isTablet, isDesktop, isTouch } = useDevice()
 
 const containerClass = computed(() => {

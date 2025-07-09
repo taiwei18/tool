@@ -117,7 +117,7 @@ export class ErrorHandler {
       url: window.location.href
     }
 
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.group(`🚨 ${error.type} Error`)
       console.error('Message:', error.message)
       console.log('Details:', logData)

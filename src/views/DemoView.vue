@@ -45,6 +45,17 @@ const gridCols = computed(() => {
   if (isTablet.value) return 2
   return 4
 })
+
+// 响应式样式类
+const cardResponsive = computed(() => ({
+  'elevation-2': !isMobile.value,
+  'elevation-1': isMobile.value
+}))
+
+const gapResponsive = computed(() => ({
+  'gap-2': isMobile.value,
+  'gap-4': !isMobile.value
+}))
 </script>
 
 <template>
@@ -63,7 +74,7 @@ const gridCols = computed(() => {
 
     <!-- 设备信息卡片 -->
     <ResponsiveLayout max-width="responsive" padding="responsive">
-      <v-card class="mb-6" :class="card-responsive">
+      <v-card class="mb-6" :class="cardResponsive">
         <v-card-title class="d-flex align-center">
           <v-icon class="mr-2" color="primary">mdi-information-outline</v-icon>
           当前设备信息
@@ -97,10 +108,10 @@ const gridCols = computed(() => {
 
     <!-- 布局控制面板 -->
     <ResponsiveLayout max-width="responsive" padding="responsive">
-      <v-card class="mb-6" :class="card-responsive">
+      <v-card class="mb-6" :class="cardResponsive">
         <v-card-title>布局控制面板</v-card-title>
         <v-card-text>
-          <v-row :class="gap-responsive">
+          <v-row :class="gapResponsive">
             <v-col cols="12" sm="6">
               <v-select
                 v-model="selectedLayout"
@@ -174,14 +185,14 @@ const gridCols = computed(() => {
       <h2 class="text-responsive-subtitle font-weight-bold text-center mb-6">
         响应式特性展示
       </h2>
-      <v-row :class="gap-responsive">
+      <v-row :class="gapResponsive">
         <v-col
           v-for="item in demoData"
           :key="item.title"
           :cols="12 / gridCols"
         >
           <v-card
-            :class="['text-center', 'h-100', card-responsive]"
+            :class="['text-center', 'h-100', cardResponsive]"
             :color="item.color"
             variant="tonal"
             hover
@@ -207,7 +218,7 @@ const gridCols = computed(() => {
 
     <!-- 交互元素演示 -->
     <ResponsiveLayout max-width="responsive" padding="responsive">
-      <v-card :class="card-responsive">
+      <v-card :class="cardResponsive">
         <v-card-title>交互元素演示</v-card-title>
         <v-card-text>
           <div class="space-responsive">

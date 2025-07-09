@@ -319,7 +319,7 @@ export default {
   batch: batchApi
 }
 
-// 导出类型
+// 导出类型（避免重复导出）
 export type {
   User,
   LoginParams,
