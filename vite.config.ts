@@ -58,9 +58,7 @@ export default defineConfig({
           // 将 Vue 相关库分割为单独的 chunk
           vue: ['vue', 'vue-router', 'pinia'],
           // 将 Vuetify 分割为单独的 chunk
-          vuetify: ['vuetify'],
-          // 将工具库分割为单独的 chunk
-          utils: ['@mdi/font']
+          vuetify: ['vuetify']
         },
         // 文件命名策略
         chunkFileNames: 'assets/js/[name]-[hash].js',

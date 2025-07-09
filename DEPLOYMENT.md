@@ -45,9 +45,22 @@
 ### 构建命令
 
 - 开发环境：`pnpm dev`
-- 生产构建：`pnpm build:prod`
+- 生产构建：`pnpm build-only`（跳过类型检查）
+- 完整构建：`pnpm build`（包含类型检查）
 - 预览构建：`pnpm preview`
 - 类型检查：`pnpm type-check`
+
+### 快速部署步骤
+
+1. 确保项目构建成功：
+   ```bash
+   pnpm build-only
+   ```
+
+2. 部署到 Vercel：
+   ```bash
+   npx vercel --prod
+   ```
 
 ### 部署配置
 
