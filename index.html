@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    
+    <!-- 基础 meta 标签 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#E91E63">
+    
+    <!-- SEO meta 标签 -->
+    <title>小红书数据提取工具 - 智能解析分享链接</title>
+    <meta name="description" content="智能解析小红书分享链接，提取图片、视频和详细信息。支持批量管理，快速搜索，完全免费的小红书数据提取工具。">
+    <meta name="keywords" content="小红书, 数据提取, 图片下载, 视频下载, 链接解析, 小红书工具, 免费工具">
+    <meta name="author" content="XHS Tools">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph meta 标签 -->
+    <meta property="og:title" content="小红书数据提取工具">
+    <meta property="og:description" content="智能解析小红书分享链接，提取图片、视频和详细信息">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:image" content="https://your-domain.com/og-image.png">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card meta 标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="小红书数据提取工具">
+    <meta name="twitter:description" content="智能解析小红书分享链接，提取图片、视频和详细信息">
+    <meta name="twitter:image" content="https://your-domain.com/twitter-image.png">
+    
+    <!-- 移动端优化 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#E91E63">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- DNS 预解析 -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- 预连接重要资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "小红书数据提取工具",
+      "description": "智能解析小红书分享链接，提取图片、视频和详细信息。支持批量管理，快速搜索的免费工具。",
+      "url": "https://your-domain.com",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "author": {
+        "@type": "Organization",
+        "name": "XHS Tools"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      }
+    }
+    </script>
+    
+    <style>
+      /* 防止页面闪烁和 FOUC */
+      #app {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #app.loaded {
+        opacity: 1;
+      }
+      
+      /* 加载动画 */
+      .loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #E91E63;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        text-align: center;
+      }
+      
+      .loading::after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 10px auto;
+        border: 2px solid #fce4ec;
+        border-top: 2px solid #E91E63;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* 优化字体渲染 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+      
+      /* 防止水平滚动 */
+      html, body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="loading">
+        <div>加载中...</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      // 页面加载完成后移除加载状态
+      window.addEventListener('load', function() {
+        const app = document.getElementById('app');
+        if (app) {
+          app.classList.add('loaded');
+        }
+      });
+      
+      // 错误处理
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+      });
+      
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+    </script>
+  </body>
+</html>
